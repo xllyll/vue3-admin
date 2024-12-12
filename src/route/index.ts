@@ -1,6 +1,4 @@
-import { createRouter, createWebHistory, RouteLocationNormalized } from "vue-router";
-
-import NProgress from 'nprogress'
+import { createRouter, createWebHistory } from "vue-router";
 
 const routes = [
     {
@@ -18,8 +16,8 @@ const routes = [
     },
 ]
 
-//设置标题
-document.title = 'admin'
+// //设置标题
+// document.title = 'admin'
 
 const router = createRouter({
     history: createWebHistory(),
@@ -29,12 +27,12 @@ const router = createRouter({
  * 全局前置守卫
  */
 router.beforeEach((to, from, next) => {
-    NProgress.start()
     document.title = to.meta.title as string
+	next();
 })
 
 router.afterEach(() => {
-    NProgress.done()
+
 })
 
 export default router
